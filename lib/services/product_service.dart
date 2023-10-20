@@ -23,6 +23,7 @@ class ProductService extends ChangeNotifier {
       _baseUrl,
       'ejemplos/product_list_rest/',
     );
+
     String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
     final response = await http.get(url, headers: {'authorization': basicAuth});
     final productsMap = Product.fromJson(response.body);
