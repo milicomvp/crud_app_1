@@ -1,9 +1,21 @@
 import 'package:crud_app_1/routes/app_routes.dart';
+import 'package:crud_app_1/services/product_service.dart';
 import 'package:crud_app_1/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(AppState());
+}
+
+class AppState extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => ProductService())],
+      child: const MyApp(),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
